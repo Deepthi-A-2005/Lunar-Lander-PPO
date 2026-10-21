@@ -1,0 +1,24 @@
+# PPO Lunar Lander — reference experiment configuration
+# Reproduce exactly: python train.py --config configs/default.yaml
+environment: LunarLander-v3
+seed: 42
+total_timesteps: 1200000
+num_envs: 16
+rollout_steps: 128            # 16 envs x 128 steps = 2048 transitions/iteration
+learning_rate: 0.0003
+gamma: 0.99
+gae_lambda: 0.95
+clip_coef: 0.2
+ent_coef: 0.01
+vf_coef: 0.5
+max_grad_norm: 0.5
+update_epochs: 4
+minibatch_size: 256
+target_eval_return: 260.0     # early-stop threshold on held-out eval
+eval_interval: 25000
+eval_episodes: 10
+eval_seed_start: 10000        # held-out block, never used for training
+early_stop_patience: 6
+save_dir: models
+log_dir: logs
+plot_dir: plots
